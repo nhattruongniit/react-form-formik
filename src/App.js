@@ -1,24 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Switch, Route, Link, NavLink } from "react-router-dom";
+
+import LoginForm from "./LoginForm";
+import LoginFormWithYup from "./LoginFormWithYup";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+        <ul class="navbar-nav">
+          <li class="nav-item nav-link">
+            <NavLink activeClass="active" to="/login-form-without-yup">
+              LoginForm without Yup
+            </NavLink>
+          </li>
+          <li class="nav-item nav-link">
+            <NavLink activeClass="active" to="/login-form-with-yup">
+              LoginForm with Yup
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
+      <div>
+        <Switch>
+          <Route path="/login-form-without-yup" component={LoginForm} />
+          <Route path="/login-form-with-yup" component={LoginFormWithYup} />
+        </Switch>
+      </div>
     </div>
   );
 }
